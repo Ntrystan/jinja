@@ -252,7 +252,7 @@ class TestFilter:
         assert out == "foo"
 
     def test_items(self, env):
-        d = {i: c for i, c in enumerate("abc")}
+        d = dict(enumerate("abc"))
         tmpl = env.from_string("""{{ d|items|list }}""")
         out = tmpl.render(d=d)
         assert out == "[(0, 'a'), (1, 'b'), (2, 'c')]"
